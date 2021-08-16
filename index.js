@@ -42,7 +42,7 @@ function counterMaker() {
    return count++;
   }
 }
-
+ 
 const counter1 = counterMaker();
 
 // counter2 code
@@ -62,8 +62,9 @@ Use the inning function below to do the following:
 NOTE: This will be a callback function for the tasks below
 */
 
-function inning(/*Code Here*/){
-    /*Code Here*/
+function inning(){
+   let score = Math.floor(Math.random()* 2)
+   return score;
 }
 
 
@@ -80,9 +81,18 @@ Use the finalScore function below to do the following:
   "Away": 5
 }
 */ 
-
-function finalScore(/*code Here*/){
-  /*Code Here*/
+//Params inningcb , number (between 1-9 innings)
+function finalScore(inningcb, number){
+  let homeScore = 0;
+  let awayScore = 0;
+  for(let i = 0; i < number; i++){
+homeScore = homeScore + inningcb();
+awayScore = awayScore + inningcb();
+  }
+  return {
+    Home: homeScore,
+    Away: awayScore
+  };
 }
 
 /* ⚾️⚾️⚾️ Task 4: getInningScore() ⚾️⚾️⚾️
@@ -90,11 +100,16 @@ Use the getInningScore() function below to do the following:
   1. Receive a callback function - you will pass in the inning function from task 2 as your argument 
   2. Return an object with a score for home and a score for away that populates from invoking the inning callback function */
 
-function getInningScore(/*Your Code Here */) {
-  /*Your Code Here */
+function getInningScore(inningcb) {
+  homeScore = inningcb();
+  awayScore = inningcb();
+  return{
+    Home: homeScore,
+    Away: awayScore
+  }
 }
 
-
+   // returning an object with a score for hom and away
 /* ⚾️⚾️⚾️ Task 5: scoreboard() ⚾️⚾️⚾️
 Use the scoreboard function below to do the following:
   1. Receive the callback function `getInningScore` from Task 4
@@ -135,7 +150,7 @@ Use the scoreboard function below to do the following:
   "This game will require extra innings: Away 10 - Home 10"
 ]  
   */
-
+// getinningscorecb, score cb, number.
 function scoreboard(/* CODE HERE */) {
   /* CODE HERE */
 }
